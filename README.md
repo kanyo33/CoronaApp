@@ -5,8 +5,8 @@
 This project was created to assist in the current efforts to turn smartphones into a tool to mitigate, control and stop the spread of the corona virus or any viral outbreak that may follow.
 Since the publication of corona related apps requires government approval, this repository is intended to help developers and public officials who are actively working on this issue by introducing and sharing ,code ,features, ideas and possibilities. 
 
-&nbsp;&nbsp;### To Access Code Open AppCode folder
-&nbsp;&nbsp;### To View Screenshots open the screenshot folder above
+&nbsp;&nbsp;<h3>To Access Code Open AppCode folder</h3>
+&nbsp;&nbsp;<h3>To View Screenshots open the screenshot folder above</h3>
 
 ## Current Implementation 
 
