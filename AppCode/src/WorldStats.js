@@ -171,6 +171,7 @@ class WorldStats extends React.Component{
             duration 
         } = this.state
         const { countryData, worldData } = this.props 
+        console.log('worldData', worldData);
         let updated = worldData[0].updated_at
         let deaths = worldData[0].deaths
         let confirmed = worldData[0].confirmed

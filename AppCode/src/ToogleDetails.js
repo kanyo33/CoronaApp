@@ -243,11 +243,23 @@ class ToggleDetails extends React.Component {
         
         return (
             <View style={{display: 'flex', justifyContent: 'space-between', flexDirection: 'column', height: '100%', paddingBottom: 15}}>
-                <View style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', paddingTop: 15, paddingHorizontal: 15}}>
+                <TouchableOpacity 
+                    onPress={() => this.props.toggleDetails(location, dead, confirmed, recovered, updated, lat,lon, true, selected.code)}
+                    style={{position: 'absolute', top: 0, overflow: 'visible', display: 'flex', alignSelf: 'center', alignItems: 'center', justifyContent: 'center'}}
+                >
+                    <View 
+                        style={{height: 6, width: 120, backgroundColor: 'white',borderRadius: 20}}
+                    />
+                </TouchableOpacity>
+                <View style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', paddingTop: 10, paddingHorizontal: 15}}>
                     <Text style={{color:'#555', fontSize: 20, fontWeight: 'bold'}}>{stat === 'Summary' ? location : stat}</Text>
-                    <View>
-                         <Icon name="times-circle" color='rgba(255,0,0,0.3)' style={{marginLeft: 20}} size={28} onPress={() => this.props.toggleDetails(location, dead, confirmed, recovered, updated, lat,lon, true, selected.code)} />
-                    </View>
+                    {
+                        countryCity === 'country' &&
+                        <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                            <Text style={{color: '#555', fontWeight: 'bold', fontSize: 12, marginRight: 3}}>Population: </Text>
+                            <Text style={{fontSize: 12, fontWeight: 'bold', borderRadius: 20, backgroundColor: 'rgba(150,150,150,1)', color: 'white', paddingVertical: 2, paddingHorizontal: 10}}>{population == null ? 0 : this.nwc(population)}</Text>
+                        </View>
+                    }
                 </View>     
                 <View>                                                                      
                     { stat === 'Summary' && 
@@ -255,18 +267,12 @@ class ToggleDetails extends React.Component {
                         {
                             countryCity == 'country' ? 
                                 <View>
-                                    <View style={{display: 'flex', flexDirection: 'row', marginTop: -20, marginBottom: 20, paddingHorizontal: 15, justifyContent: 'space-between', alignItems: 'center'}}>
-                                        <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                                            <Text style={{color: '#555', fontWeight: 'bold', fontSize: 12, marginRight: 5}}>Population: </Text>
-                                            <Text style={{fontSize: 12, fontWeight: 'bold', backgroundColor: 'rgba(150,150,150,1)', color: 'white', paddingVertical: 2, paddingHorizontal: 10}}>{population == null ? 0 : this.nwc(population)}</Text>
-                                        </View>
-                                        <Text style={{fontSize: 12, fontWeight: 'bold', color: '#555'}}>{new Date().toISOString().slice(0,10)}</Text>
-                                    </View>
-                                    <View style={{flexDirection: 'row', alignItems: 'center', marginBottom: 15, justifyContent: 'space-around'}}>
+                                    <View style={{flexDirection: 'row', alignItems: 'center', marginBottom: 0, justifyContent: 'space-around'}}>
                                         <View style={{flexDirection: 'column', alignItems: 'center'}}>
-                                            <View style={{display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
-                                                <Text style={{fontSize: 18, fontWeight: 'bold', backgroundColor: 'rgba(255,166,91,1)', color: 'white', paddingVertical: 2, paddingHorizontal: 10}}>{confirmed == null ? 0 : this.nwc(confirmed + todayNewConf)}</Text>
-                                                <View style={todayGConf === 1 ? {display: 'flex', flexDirection: 'row', alignItems: 'center', borderColor: 'red', borderWidth: 2} : {display: 'flex', flexDirection: 'row', alignItems: 'center', borderColor: 'green', borderWidth: 2}}>
+                                            <View style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+                                                <Text style={{color: '#666', fontWeight: 'bold', fontSize: 20, marginTop: 3}}>Confirmed</Text>
+                                                <Text style={{fontSize: 22, marginBottom: 5, fontWeight: 'bold', backgroundColor: 'rgba(255,166,91,1)', color: 'white', paddingVertical: 2, borderRadius: 5, paddingHorizontal: 10}}>{confirmed == null ? 0 : this.nwc(confirmed + todayNewConf)}</Text>
+                                                <View style={todayGConf === 1 ? {display: 'flex', flexDirection: 'row', alignItems: 'center', borderColor: 'red', borderWidth: 2, borderRadius: 5, overflow: 'hidden'} : {display: 'flex', flexDirection: 'row', alignItems: 'center', borderColor: 'green', borderWidth: 2, borderRadius: 5, overflow: 'hidden'}}>
                                                     { 
                                                         todayGConf === 1 ?
                                                         <Icon style={{padding: 3}} name='arrow-up' color='red' size={17} />
@@ -276,29 +282,12 @@ class ToggleDetails extends React.Component {
                                                     <Text style={todayGConf === 1 ? {backgroundColor: 'red', color: 'white', paddingVertical: 3, paddingHorizontal: 3, fontWeight: 'bold'} : {backgroundColor: 'green', color: 'white', paddingVertical: 3, paddingHorizontal: 3, fontWeight: 'bold'}}>{todayNewConf}</Text>
                                                 </View>
                                             </View>
-                                            <Text style={{color: '#666', fontWeight: 'bold', fontSize: 16, marginTop: 3}}>Confirmed</Text>
                                         </View>
                                         <View style={{flexDirection: 'column', alignItems: 'center'}}>
-                                            <View style={{display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
-                                                <Text style={{fontSize: 18, fontWeight: 'bold', backgroundColor: 'rgba(255,100,0,1)', color: 'white', paddingVertical: 2, paddingHorizontal: 10}}>{critical == null ? 0 : this.nwc(critical + todayNewOpen)}</Text>
-                                                <View style={todayGOpen === 1 ? {display: 'flex', flexDirection: 'row', alignItems: 'center', borderColor: 'red', borderWidth: 2} : {display: 'flex', flexDirection: 'row', alignItems: 'center', borderColor: 'green', borderWidth: 2}}>
-                                                    { 
-                                                        todayGOpen === 1 ?
-                                                        <Icon style={{padding: 3}} name='arrow-up' color='red' size={17} />
-                                                        :
-                                                        <Icon style={{padding: 3}} name='arrow-down' color='green' size={17} />
-                                                    }
-                                                    <Text style={todayGOpen === 1 ? {backgroundColor: 'red', color: 'white', paddingVertical: 3, paddingHorizontal: 3, fontWeight: 'bold'} : {backgroundColor: 'green', color: 'white', paddingVertical: 3, paddingHorizontal: 3, fontWeight: 'bold'}}>{todayNewOpen}</Text>
-                                                </View>
-                                            </View>
-                                            <Text style={{color: '#666', fontWeight: 'bold', fontSize: 16, marginTop: 3}}>Critical</Text>
-                                        </View>
-                                    </View>
-                                    <View style={{flexDirection: 'row', alignItems: 'center', marginBottom: 5, justifyContent: 'space-around'}}>
-                                        <View style={{flexDirection: 'column', alignItems: 'center'}}>
-                                            <View style={{display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
-                                                <Text style={{fontSize: 18, fontWeight: 'bold', backgroundColor: 'rgba(38, 166, 91,1)', color: 'white', paddingVertical: 2, paddingHorizontal: 10}}>{recovered == null ? 0 : this.nwc(recovered + todayNewRecovered)}</Text>
-                                                <View style={todayGRecovered === 0 ? {display: 'flex', flexDirection: 'row', alignItems: 'center', borderColor: 'red', borderWidth: 2} : {display: 'flex', flexDirection: 'row', alignItems: 'center', borderColor: 'green', borderWidth: 2}}>
+                                            <View style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+                                            <Text style={{color: '#666', fontWeight: 'bold', fontSize: 20, marginTop: 3}}>Recovered</Text>
+                                                <Text style={{fontSize: 22, marginBottom: 5, fontWeight: 'bold', backgroundColor: 'rgba(38, 166, 91,1)', color: 'white', paddingVertical: 2, paddingHorizontal: 10, borderRadius: 5, overflow: 'hidden'}}>{recovered == null ? 0 : this.nwc(recovered + todayNewRecovered)}</Text>
+                                                <View style={todayGRecovered === 0 ? {display: 'flex', flexDirection: 'row', alignItems: 'center', borderColor: 'red', borderWidth: 2, borderRadius: 5, overflow: 'hidden'} : {display: 'flex', flexDirection: 'row', alignItems: 'center', borderColor: 'green', borderWidth: 2, borderRadius: 5, overflow: 'hidden'}}>
                                                     { 
                                                         todayGRecovered === 1 ?
                                                         <Icon style={{padding: 3}} name='arrow-up' color='green' size={17} />
@@ -308,12 +297,29 @@ class ToggleDetails extends React.Component {
                                                     <Text style={todayGRecovered === 0 ? {backgroundColor: 'red', color: 'white', paddingVertical: 3, paddingHorizontal: 3, fontWeight: 'bold'} : {backgroundColor: 'green', color: 'white', paddingVertical: 3, paddingHorizontal: 3, fontWeight: 'bold'}}>{todayNewRecovered}</Text>
                                                 </View>
                                             </View>
-                                            <Text style={{color: '#666', fontWeight: 'bold', fontSize: 16, marginTop: 3}}>Recovered</Text>
                                         </View>
                                         <View style={{flexDirection: 'column', alignItems: 'center'}}>
+                                            <View style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+                                                <Text style={{color: '#666', fontWeight: 'bold', fontSize: 20, marginTop: 3}}>Critical</Text>
+                                                <Text style={{marginBottom: 5, fontSize: 22, fontWeight: 'bold', backgroundColor: 'rgba(255,100,0,1)', color: 'white', paddingVertical: 2, paddingHorizontal: 10, borderRadius: 5, overflow: 'hidden'}}>{critical == null ? 0 : this.nwc(critical + todayNewOpen)}</Text>
+                                                <View style={todayGOpen === 1 ? {display: 'flex', flexDirection: 'row', alignItems: 'center', borderColor: 'red', borderWidth: 2, borderRadius: 5, overflow: 'hidden'} : {display: 'flex', flexDirection: 'row', alignItems: 'center', borderColor: 'green', borderWidth: 2, borderRadius: 5, overflow: 'hidden'}}>
+                                                    { 
+                                                        todayGOpen === 1 ?
+                                                        <Icon style={{padding: 3}} name='arrow-up' color='red' size={17} />
+                                                        :
+                                                        <Icon style={{padding: 3}} name='arrow-down' color='green' size={17} />
+                                                    }
+                                                    <Text style={todayGOpen === 1 ? {backgroundColor: 'red', color: 'white', paddingVertical: 3, paddingHorizontal: 3, fontWeight: 'bold'} : {backgroundColor: 'green', color: 'white', paddingVertical: 3, paddingHorizontal: 3, fontWeight: 'bold'}}>{todayNewOpen}</Text>
+                                                </View>
+                                            </View>
+                                        </View>
+                                    </View>
+                                    <View style={{flexDirection: 'row', alignItems: 'center', marginBottom: 10, marginTop: 25, justifyContent: 'space-around'}}>
+                                        <View style={{flexDirection: 'column', alignItems: 'center'}}>
                                             <View style={{display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
-                                                <Text style={{fontSize: 18, fontWeight: 'bold', backgroundColor: 'rgba(255, 0, 0,1)', color: 'white', paddingVertical: 2, paddingHorizontal: 10}}>{dead == null ? 0 : this.nwc(dead + todayNewDead)}</Text>
-                                                <View style={todayGDead === 1 ? {display: 'flex', flexDirection: 'row', alignItems: 'center', borderColor: 'red', borderWidth: 2} : {display: 'flex', flexDirection: 'row', alignItems: 'center', borderColor: 'green', borderWidth: 2}}>
+                                                <Text style={{color: '#666', fontWeight: 'bold', fontSize: 20, marginRight: 10}}>Dead</Text>
+                                                <Text style={{fontSize: 22, fontWeight: 'bold', backgroundColor: 'rgba(255, 0, 0,1)', marginRight: 10 , color: 'white', paddingVertical: 2, paddingHorizontal: 10, borderRadius: 5, overflow: 'hidden'}}>{dead == null ? 0 : this.nwc(dead + todayNewDead)}</Text>
+                                                <View style={todayGDead === 1 ? {display: 'flex', flexDirection: 'row', alignItems: 'center', borderColor: 'red', borderWidth: 2, borderRadius: 5, overflow: 'hidden'} : {display: 'flex', flexDirection: 'row', alignItems: 'center', borderColor: 'green', borderWidth: 2, borderRadius: 5, overflow: 'hidden'}}>
                                                     { 
                                                         todayGDead === 1 ?
                                                         <Icon style={{padding: 3}} name='arrow-up' color='red' size={17} />
@@ -323,7 +329,6 @@ class ToggleDetails extends React.Component {
                                                     <Text style={todayGDead === 1 ? {backgroundColor: 'red', color: 'white', paddingVertical: 3, paddingHorizontal: 3, fontWeight: 'bold'} : {backgroundColor: 'green', color: 'white', paddingVertical: 3, paddingHorizontal: 3, fontWeight: 'bold'}}>{todayNewDead}</Text>
                                                 </View>
                                             </View>
-                                            <Text style={{color: '#666', fontWeight: 'bold', fontSize: 16, marginTop: 3}}>Dead</Text>
                                         </View>
                                     </View>
                                     <View>

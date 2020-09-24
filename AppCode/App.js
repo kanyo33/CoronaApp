@@ -111,7 +111,8 @@ class App extends React.Component {
   async componentDidMount(){
         RNBootSplash.hide();
         Orientation.lockToPortrait();
-        YellowBox.ignoredWarnings(['Setting a timer']);
+        // YellowBox.ignoredWarnings(['Setting a timer']);
+        console.disableYellowBox = true; 
         let data1 = []
         let currentDate = new Date().toLocaleDateString()
         let today = new Date(this.props.updateDate).toLocaleDateString()
@@ -193,7 +194,7 @@ class App extends React.Component {
       grantedAndroid = await PermissionsAndroid.request(
         PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
         {
-          title: "Location Camera Permission",
+          title: "Location Permission",
           message:
             "Covid Tracker would like to access your location " +
             "so you can easily access recorded cases nearby you.",
@@ -248,7 +249,7 @@ class App extends React.Component {
 
   coronaActivatedFetch = (show) => {
     let uniqueId = getUniqueId();
-    onCoronaTested(show)
+    this.props.onCoronaTested(show)
     if (show){
       this.setState({
         coronaTested: true,
@@ -567,7 +568,7 @@ class App extends React.Component {
             </TouchableOpacity>
 
 
-            <Overlay isVisible={this.state.settings} fullscreen overlayStyle={{padding: -10}} onBackdropPress={()=> this.setState({settings: false})}>
+            <Overlay isVisible={this.state.settings} fullscreen overlayStyle={{padding: -10, borderRadius: 20, overflow: 'hidden'}} onBackdropPress={()=> this.setState({settings: false})}>
               <Setting overlayClose={this.overlayChange}/>
             </Overlay>
 
@@ -591,7 +592,7 @@ class App extends React.Component {
             <SnackBar visible={this.state.noInternet} textMessage="Unable to Update Info" position={Platform.OS === 'ios' ? 'bottom' : 'top'} backgroundColor="#ff7500" accentColor="#fff" autoHidingTime={3000} actionText="No Connection" actionHandler={() => this.setState({noInternet: false})}/>  
             <SnackBar visible={this.state.addLocation} textMessage="Enable Access To Location" position={Platform.OS === 'ios' ? 'bottom' : 'top'} backgroundColor="#ff073a" accentColor="#fff" autoHidingTime={3000} actionText="Location Required" actionHandler={() => this.setState({addLocation: false})}/>  
             
-            <Overlay isVisible={this.state.bookmarks} overlayStyle={{padding: -10}} onBackdropPress={()=> this.setState({bookmarks: false})} >
+            <Overlay isVisible={this.state.bookmarks} overlayStyle={{padding: -10, borderRadius: 20, overflow: 'hidden'}} onBackdropPress={()=> this.setState({bookmarks: false})} >
               <Bookmarks 
                 changePosition={this.changePosition} 
                 overlayClose={()=> this.setState({bookmarks: false})}
@@ -612,7 +613,7 @@ class App extends React.Component {
           }
           { this.state.coronaActive && this.state.showStat &&
             <Animated.View
-              style={[styles.subView,
+              style={[styles.subView2,
                 {transform: [{translateY: this.state.bounceValue}]}]}
             >
             <CoronaActive 
@@ -626,7 +627,7 @@ class App extends React.Component {
           </Animated.View>
           }
           {
-            this.state.showStat &&
+            this.state.showStat && !this.state.coronaActive &&
             <View style={styles.selectBtn}>
               <View style={styles.buttonAlign}>
                 <Button 
@@ -683,22 +684,22 @@ const styles = StyleSheet.create({
   },
   settings: {
     position: 'absolute',
-    top: 30,
+    top: Platform.OS === 'ios' ? 50 : 30,
     right: 0,
   },
   globe: {
     position: 'absolute',
-    top: 150,
+    top: Platform.OS === 'ios' ? 170 : 150,
     right: 0,
   },
   zoom: {
     position: 'absolute',
-    top: 205,
+    top: Platform.OS === 'ios' ? 225 : 205,
     right: 0,
   },
   bookmarks: {
     position: 'absolute',
-    top: 90,
+    top: Platform.OS === 'ios' ? 110 : 90,
     right: 0,
   },
   subView: {
@@ -708,9 +709,21 @@ const styles = StyleSheet.create({
     height: 300,
     left: 0,
     right: 0,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+  },
+  subView2: {
+    position: "absolute",
+    bottom: 0,
+    backgroundColor: "rgba(255,255,255,1)",
+    height: 280,
+    overflow: 'hidden',
+    left: 0,
+    right: 0,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
   },
   selectBtn: {
-
     position: 'absolute',
     bottom: 20,
     right: 10,

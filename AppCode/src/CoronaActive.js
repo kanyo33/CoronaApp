@@ -29,7 +29,7 @@ class CoronaActive extends React.Component{
                         <Icon name="info-circle" size={30} color='#ff073a' style={{marginRight: 10}} />
                         <Text style={{width: '90%', color: '#333'}}>Your exact location will not be shared. A geographical fence with a 6 km diameter is created to inform other users.</Text>
                     </View>
-                    <View>
+                    <View style={{backgroundColor: 'white'}}>
                     {
                         !this.props.coronaTested ?
                         <TouchableOpacity onPress={() => this.props.coronaActivated(true)} style={{alignItems: 'center',borderWidth: 3, borderColor: 'black', borderRadius: 5, padding: 5, marginHorizontal: 40, backgroundColor: '#ff073a'}}>
@@ -47,7 +47,7 @@ class CoronaActive extends React.Component{
                         </TouchableOpacity>
                     }
                         
-                        <Text style={{color: '#333', textAlign: 'center', marginTop: 5}}>I acknowledge that I have read the <Text style={{fontWeight: 'bold'}} onPress={()=> this.props.openPrivacy(true)}>privacy</Text> and <Text style={{fontWeight: 'bold'}} onPress={()=> this.props.openTerms(true)}>terms</Text>.</Text>
+                        <Text style={{color: '#333', textAlign: 'center', marginTop: 15}}>I acknowledge that I have read the <Text style={{fontWeight: 'bold'}} onPress={()=> this.props.openPrivacy(true)}>privacy</Text> and <Text style={{fontWeight: 'bold'}} onPress={()=> this.props.openTerms(true)}>terms</Text>.</Text>
                     </View>
                 </View> 
             </>
