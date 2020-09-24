@@ -1,0 +1,1 @@
+![bookmarked]('/screenshots/images/bookmarked.png') ![changeMapDesign]('/screenshots/images/changeMapDesign.png')
