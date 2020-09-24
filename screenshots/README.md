@@ -1,1 +1,1 @@
-![bookmarked](/screenshots/images/bookmarked1.png) ![bookmarked1](/screenshots/images/bookmarked1.png)
+![bookmarked](/screenshots/images/bookmarked.png) ![changeMapDesign](/screenshots/images/changeMapDesign.png) ![cityView](/screenshots/images/cityView.png) ![citysummary](/screenshots/images/citysummary.png) ![countryView](/screenshots/images/countryView.png) ![countrySummary](/screenshots/images/countrySummary.png) ![frq](/screenshots/images/frq.png) ![globalSummary](/screenshots/images/globalSummary.png) ![landview](/screenshots/images/landview.png)
