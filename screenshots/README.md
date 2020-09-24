@@ -1,1 +1,1 @@
-![bookmarked](/screenshots/images/bookmarked.png) ![changeMapDesign](/screenshots/images/changeMapDesign.png)
+![bookmarked](/screenshots/images/bookmarked.png){:height="50%" width="50%"} ![changeMapDesign](/screenshots/images/changeMapDesign.png){:height="50%" width="50%"}
