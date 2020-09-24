@@ -1,1 +1,1 @@
-![bookmarked](/screenshots/images/bookmarked.png =250x) ![changeMapDesign](/screenshots/images/changeMapDesign.png =250x)
+![bookmarked](/screenshots/images/bookmarked1.png) ![bookmarked1](/screenshots/images/bookmarked1.png)
