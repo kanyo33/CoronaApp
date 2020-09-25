@@ -1,11 +1,11 @@
 ## App Setup
 
-Install NPM dependencies within AppCode Folder
+Install NPM dependencies within the AppCode Folder
 
 ```
    npm install 
 ```
-if problems exist:
+If problems exist:
     - Delete package-lock.json file and run ```npm install``` again
 
 ### For Android
@@ -31,7 +31,7 @@ if problems exist:
 
 ## Current Implementation
 
-- Uses React-Native with minor object-c and java additions.
+- Uses React-Native with minor objective-c and java additions.
 - Uses redux to manage state.
 - SQL-lite storage stores all data points for offline usage (SEE FUTURE IMPLEMENTATION).
 - Firebase is used to store active cases including location of user and the devices unique ID (SEE FUTURE IMPLEMENTATION).
@@ -40,7 +40,7 @@ if problems exist:
 - Cities and countries within proximity to one another are pooled together into clusters for better performance when loading.
 - Notifications can be sent to users.
 - User is forwarded to WHO for more information. 
-- User can bookmark a specific city or country. When the user click on the bookmark the map animates to the specific location and the summary regarding the spread of the virus opens.
+- User can bookmark a specific city or country. When the user clicks on the bookmark the map animates to the specific location and the summary regarding the spread of the virus opens.
 - Projection statistics are provided by using the average global growth rate (SEE FUTURE IMPLEMENTATION).
 
 
@@ -50,15 +50,15 @@ if problems exist:
 - [ ] Run unit tests on node packages added to remove warnings.
 - [ ] Load balance data based on geographical zones to improve performance.
 - [ ] Connect geographical zones of active cases to users current location to send out notifications when user enters a geographical zone where an active case was reported. 
-- [ ] Conduct a threat level analysis by using the number of active cases within a certain proximity to the user and dividing that by the growth levels of countries data multiplied by 100.
+- [ ] Conduct a threat level analysis by using the number of active cases within a certain radius and divide that by the growth levels of the appropriate country.
 - [ ] Notifications are sent out to inform the user of current threat levels + ability to opt out.
 - [ ] Notifications are sent out to inform users of any important issues regarding the virus + ability to opt out.  
 - [ ] Notifications are shared when the user leaves the house to take appropriate measures to safeguard oneself + ability to opt out.
 - [ ] Store data fetched onto database to perform different computations
     - [ ] Growth rate analysis of historic data
     - [ ] Run Machine algorithm 
-        - [ ] Perform sentiment analysis between public news shared and growth rate of viral infection to deduce correlation of the spread.
-        - [ ] Use user location history and active statuses shared to predict what users may have been affected by active case.
+        - [ ] Perform sentiment analysis between public news shared and growth rate of the viral infection to analyze the correlation.
+        - [ ] Use the users location history and positive tested statuses shared to predict what users may have been affected.
         - [ ] Develop model of cases that go undetected by cross analyzing shared active cases, historic growth data and location history of users. 
         - [ ] Perform risk analysis of job occupation, time spent in proximity to others and countries growth rate.
 
