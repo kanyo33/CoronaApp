@@ -39,4 +39,4 @@ Since the publication of corona related apps requires government approval, this 
 
 ## Please Share
 
-If you believe that this repository can be helpful in mitigating and stopping the current viral outbreak than feel free to share, like, offer suggestions and to help in the development of the aforementioned features. The purpose is to attract a community of individuals who are willing to donate a little bit of their time to improve the quality of life for all. 
+If you believe that this repository can be helpful in mitigating and stopping the current viral outbreak than feel free to share, like, offer suggestions and to help in the development of the aforementioned features. The purpose is to attract a community of individuals who are willing to donate a little bit of their time to improve the quality of life for everyone. 
