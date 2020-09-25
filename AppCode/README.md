@@ -16,9 +16,9 @@ if problems exist:
 If problems exist:
     - Update to the newest android studio version
     - Delete .idea folder inside android folder
-    - Run ``` gradlew clean``` inside android folder run:
+    - Run ``` gradlew clean``` inside android folder.
     - Delete .iml files inside android main and android/app folder
-    - run invalidate and clear cache inside android studio
+    - Run invalidate and clear cache inside android studio
 
 ### For IOS
 ```
@@ -27,36 +27,41 @@ If problems exist:
     npm run ios
 ```
 if problems exist:
-    - remove pod lock file and run pod install again
-
+    - remove pod lock file inside ios folder and run ```pod install``` again
 
 ## Current Implementation
 
-- Uses React-Native width minor object-c and java implementations.
+- Uses React-Native with minor object-c and java additions.
 - Uses redux to manage state.
-- SQL-lite storage is used to store all data points for offline usage (SEE FUTURE IMPLEMENTATION).
-- Firebase is used to store active cases and the users unique device ID (SEE FUTURE IMPLEMENTATION).
-- Due to the large amount of data the app may lag on emulated testing. 
-- Separate API fetches gather data and spread it out throughout the map.
-- Cities and countries are pooled together into clusters based on proximity to one another for better performance when loading.
+- SQL-lite storage stores all data points for offline usage (SEE FUTURE IMPLEMENTATION).
+- Firebase is used to store active cases including location of user and the devices unique ID (SEE FUTURE IMPLEMENTATION).
+- Due to the large amount of data, the app may lag on emulated testing. 
+- Separate API fetches are used to pool together all corona related data points.
+- Cities and countries within proximity to one another are pooled together into clusters for better performance when loading.
 - Notifications can be sent to users.
 - User is forwarded to WHO for more information. 
-- User can bookmark a specific city or country. When users click on the bookmark the map is set to the specific location and summary regarding the spread of the virus in that region is shared.
+- User can bookmark a specific city or country. When the user click on the bookmark the map animates to the specific location and the summary regarding the spread of the virus opens.
 - Projection statistics are provided by using the average global growth rate (SEE FUTURE IMPLEMENTATION).
 
 
 ## Future Implementations
 
-- [ ] Refactor 
-- [ ] Run unit tests on node packages added to remove warnings
-- [ ] Load balance data based on geographical zones to improve load speed.
-- [ ] Connect geographical zones of active cases to users current location to send out notifications when user enters danger zone. 
-- [ ] Conduct threat level analysis by using number of active cases in proximity to the user and growth levels of city wide/ country wide growth levels.
-- [ ] Notifications are sent out to inform the user of current threat levels.
-- [ ] Notifications are sent out to inform users of any important issues regarding the virus.  
-
+- [ ] Refactor. 
+- [ ] Run unit tests on node packages added to remove warnings.
+- [ ] Load balance data based on geographical zones to improve performance.
+- [ ] Connect geographical zones of active cases to users current location to send out notifications when user enters a geographical zone where an active case was reported. 
+- [ ] Conduct a threat level analysis by using the number of active cases within a certain proximity to the user and dividing that by the growth levels of countries data multiplied by 100.
+- [ ] Notifications are sent out to inform the user of current threat levels + ability to opt out.
+- [ ] Notifications are sent out to inform users of any important issues regarding the virus + ability to opt out.  
+- [ ] Notifications are shared when the user leaves the house to take appropriate measures to safeguard oneself + ability to opt out.
 - [ ] Store data fetched onto database to perform different computations
     - [ ] Growth rate analysis of historic data
     - [ ] Run Machine algorithm 
-        - [ ] Perform sentiment analysis between public news shared and growth rate
-        - [ ] Use user location history and active status to predict what users may have been affected by active case.
+        - [ ] Perform sentiment analysis between public news shared and growth rate of viral infection to deduce correlation of the spread.
+        - [ ] Use user location history and active statuses shared to predict what users may have been affected by active case.
+        - [ ] Develop model of cases that go undetected by cross analyzing shared active cases, historic growth data and location history of users. 
+        - [ ] Perform risk analysis of job occupation, time spent in proximity to others and countries growth rate.
+
+## Please Share
+
+If you believe that this repository can be helpful in mitigating and stopping the current viral outbreak than feel free to share, like, offer suggestions and to help in the development of the apps features. The purpose is to attract a community of individuals who are willing to donate a little bit of their time to improve the quality of life for all. 
