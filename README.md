@@ -7,6 +7,7 @@ Since the publication of corona related apps requires government approval, this 
 
 ### [> View Source Code ](AppCode)
 ### [> View Screenshots](screenshots)
+### [> Run App for None Developers](SetupForNoneDev)
 <hr />
 
 ## Current Implementation 
