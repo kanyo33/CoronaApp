@@ -11,28 +11,28 @@
 Download most recent stable version
 
 ## 4. Copy folder Link
-![Download Report](/1.coronasetup/downloadlink.PNG)
+![Download Report](/coronasetup/1.downloadlink.PNG)
 
-## 4. Create folder on computer 
+## 5. Create folder on computer 
 Name it accordingly (e.g. coronaApp) and open folder 
 
-## 5. Once inside the folder 
-![Copy Project](/2.coronasetup/runbash.PNG)
+## 6. Once inside the folder 
+![Copy Project](/2.coronasetup/2.runbash.PNG)
 
-## 6. Download github project
-![Copy Project](/2.coronasetup/downloadcode.PNG)
+## 7. Download github project
+![Copy Project](/2.coronasetup/3.downloadcode.PNG)
 
-## 7. Download all modules relevant for project inside the folder shown
-![Copy Project](/2.coronasetup/npmdownload.PNG)
+## 8. Download all modules relevant for project inside the folder shown
+![Copy Project](/2.coronasetup/4.npmdownload.PNG)
 
-## 8. Download Packages
-![Copy Project](/2.coronasetup/downloadpackages.PNG)
+## 9. Download Packages
+![Copy Project](/2.coronasetup/5.downloadpackages.PNG)
 
-## 9. Open Android Studio - open the folder shown
-![Copy Project](/2.coronasetup/androidstudio.PNG)
+## 10. Open Android Studio - open the folder shown
+![Copy Project](/2.coronasetup/6.androidstudio.PNG)
 
-## 10. Navigate to folder with source code and connect phone to computer
-![Copy Project](/2.coronasetup/runapp.PNG)
+## 11. Navigate to folder with source code and connect phone to computer
+![Copy Project](/2.coronasetup/7.runapp.PNG)
 
-## 11. Bundle project 
-![Copy Project](/2.coronasetup/runonphone.PNG)
+## 12. Bundle project 
+![Copy Project](/2.coronasetup/8.runonphone.PNG)
