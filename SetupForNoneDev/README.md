@@ -17,22 +17,22 @@ Download most recent stable version
 Name it accordingly (e.g. coronaApp) and open folder 
 
 ## 6. Once inside the folder 
-![Copy Project](/2.coronasetup/2.runbash.PNG)
+![Copy Project](/coronasetup/2.runbash.PNG)
 
 ## 7. Download github project
-![Copy Project](/2.coronasetup/3.downloadcode.PNG)
+![Copy Project](/coronasetup/3.downloadcode.PNG)
 
 ## 8. Download all modules relevant for project inside the folder shown
-![Copy Project](/2.coronasetup/4.npmdownload.PNG)
+![Copy Project](/coronasetup/4.npmdownload.PNG)
 
 ## 9. Download Packages
-![Copy Project](/2.coronasetup/5.downloadpackages.PNG)
+![Copy Project](/coronasetup/5.downloadpackages.PNG)
 
 ## 10. Open Android Studio - open the folder shown
-![Copy Project](/2.coronasetup/6.androidstudio.PNG)
+![Copy Project](/coronasetup/6.androidstudio.PNG)
 
 ## 11. Navigate to folder with source code and connect phone to computer
-![Copy Project](/2.coronasetup/7.runapp.PNG)
+![Copy Project](/coronasetup/7.runapp.PNG)
 
 ## 12. Bundle project 
-![Copy Project](/2.coronasetup/8.runonphone.PNG)
+![Copy Project](/coronasetup/8.runonphone.PNG)
