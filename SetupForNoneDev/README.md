@@ -1,4 +1,5 @@
 # Run the App (For None Devs)
+> The setup will only work on a laptop or desktop
 
 ## 1. Download Android Studio 
 ## [> Link to Android Studio](https://developer.android.com/studio)

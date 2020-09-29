@@ -16,6 +16,7 @@ import {
 } from 'react-native';
 
 
+
 import { check, PERMISSIONS, RESULTS } from 'react-native-permissions'; 
 import { Overlay, Button } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -45,6 +46,7 @@ import Setting from './src/Settings';
 import Bookmarks from './src/Bookmarks';
 import WorldStats from './src/WorldStats';
 import CoronaActive from './src/CoronaActive';
+import {CoronaNews} from './src/CoronaNews';
 import Terms from './src/Terms';
 import Privacy from './src/Privacy';
 
@@ -103,7 +105,8 @@ class App extends React.Component {
     openPrivacy: false,
     coronaTested: false,
     affectedArea: [],
-    addLocation: false
+    addLocation: false,
+    news: false
   }
 
 
@@ -327,7 +330,7 @@ class App extends React.Component {
         bookmarked: false,
         removeBookmark: false,
         showStat: show,
-        addLocation: false
+        addLocation: false,
       });
 
       var toValue = 300;
@@ -558,7 +561,11 @@ class App extends React.Component {
              <TouchableOpacity onPress={() => this.setState({bookmarks: true})} style={styles.bookmarks}> 
               <Icon name="bookmark" style={styles.shadow1} color="#fff" size={24} />
             </TouchableOpacity>
-            
+
+             <TouchableOpacity onPress={() => this.setState({news: true})} style={styles.newspaper}> 
+              <Icon name="bell" style={styles.shadow1} color="#fff" size={24} />
+            </TouchableOpacity>
+
             <TouchableOpacity onPress={() => this.setState({globe: true})} style={styles.globe}> 
               <Icon name="globe" style={styles.shadow} color="#fff" size={24} />
             </TouchableOpacity>
@@ -567,6 +574,9 @@ class App extends React.Component {
               <Icon name="crosshairs" style={styles.shadow} color="#fff" size={24} />
             </TouchableOpacity>
 
+            <Overlay isVisible={this.state.news} height={'100%'} width={'100%'} overlayStyle={{padding: -10}} >
+              <CoronaNews overlayClose={() => this.setState({news: false})}/>
+            </Overlay>
 
             <Overlay isVisible={this.state.settings} fullscreen overlayStyle={{padding: -10, borderRadius: 20, overflow: 'hidden'}} onBackdropPress={()=> this.setState({settings: false})}>
               <Setting overlayClose={this.overlayChange}/>
@@ -687,14 +697,19 @@ const styles = StyleSheet.create({
     top: Platform.OS === 'ios' ? 50 : 30,
     right: 0,
   },
-  globe: {
+  newspaper: {
     position: 'absolute',
     top: Platform.OS === 'ios' ? 170 : 150,
+    right: 3,
+  },
+  globe: {
+    position: 'absolute',
+    top: Platform.OS === 'ios' ? 225 : 205,
     right: 0,
   },
   zoom: {
     position: 'absolute',
-    top: Platform.OS === 'ios' ? 225 : 205,
+    top: Platform.OS === 'ios' ? 280 : 260,
     right: 0,
   },
   bookmarks: {

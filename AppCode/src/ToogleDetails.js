@@ -22,7 +22,8 @@ import {countryCode} from './utils/countryCode';
 
 import {connect} from 'react-redux';
 import { cityBookmark, countryBookmark, rmCityBookmark, rmCountryBookmark } from '../store/actions/index';
-
+import { ToggleCountryStat } from './components/ToggleCountryStat';
+ 
 import moment from 'moment';
 
 const chartConfig = {
@@ -104,10 +105,8 @@ class ToggleDetails extends React.Component {
         const critical = selected.critical
         const calculated = selected.calculated
 
-        console.log('country', countryCode[selected.code])
 
         let worldDataToday = worldData1.countries[countryCode[selected.code]] || 0 
-        console.log('wordDataToday', worldDataToday)
 
         let tNewConf = worldDataToday.today_new_confirmed || 0;
         let tNewDead = worldDataToday.today_new_deaths || 0;
@@ -268,51 +267,30 @@ class ToggleDetails extends React.Component {
                             countryCity == 'country' ? 
                                 <View>
                                     <View style={{flexDirection: 'row', alignItems: 'center', marginBottom: 0, justifyContent: 'space-around'}}>
-                                        <View style={{flexDirection: 'column', alignItems: 'center'}}>
-                                            <View style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-                                                <Text style={{color: '#666', fontWeight: 'bold', fontSize: 20, marginTop: 3}}>Confirmed</Text>
-                                                <Text style={{fontSize: 22, marginBottom: 5, fontWeight: 'bold', backgroundColor: 'rgba(255,166,91,1)', color: 'white', paddingVertical: 2, borderRadius: 5, paddingHorizontal: 10}}>{confirmed == null ? 0 : this.nwc(confirmed + todayNewConf)}</Text>
-                                                <View style={todayGConf === 1 ? {display: 'flex', flexDirection: 'row', alignItems: 'center', borderColor: 'red', borderWidth: 2, borderRadius: 5, overflow: 'hidden'} : {display: 'flex', flexDirection: 'row', alignItems: 'center', borderColor: 'green', borderWidth: 2, borderRadius: 5, overflow: 'hidden'}}>
-                                                    { 
-                                                        todayGConf === 1 ?
-                                                        <Icon style={{padding: 3}} name='arrow-up' color='red' size={17} />
-                                                        :
-                                                        <Icon style={{padding: 3}} name='arrow-down' color='green' size={17} />
-                                                    }
-                                                    <Text style={todayGConf === 1 ? {backgroundColor: 'red', color: 'white', paddingVertical: 3, paddingHorizontal: 3, fontWeight: 'bold'} : {backgroundColor: 'green', color: 'white', paddingVertical: 3, paddingHorizontal: 3, fontWeight: 'bold'}}>{todayNewConf}</Text>
-                                                </View>
-                                            </View>
-                                        </View>
-                                        <View style={{flexDirection: 'column', alignItems: 'center'}}>
-                                            <View style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-                                            <Text style={{color: '#666', fontWeight: 'bold', fontSize: 20, marginTop: 3}}>Recovered</Text>
-                                                <Text style={{fontSize: 22, marginBottom: 5, fontWeight: 'bold', backgroundColor: 'rgba(38, 166, 91,1)', color: 'white', paddingVertical: 2, paddingHorizontal: 10, borderRadius: 5, overflow: 'hidden'}}>{recovered == null ? 0 : this.nwc(recovered + todayNewRecovered)}</Text>
-                                                <View style={todayGRecovered === 0 ? {display: 'flex', flexDirection: 'row', alignItems: 'center', borderColor: 'red', borderWidth: 2, borderRadius: 5, overflow: 'hidden'} : {display: 'flex', flexDirection: 'row', alignItems: 'center', borderColor: 'green', borderWidth: 2, borderRadius: 5, overflow: 'hidden'}}>
-                                                    { 
-                                                        todayGRecovered === 1 ?
-                                                        <Icon style={{padding: 3}} name='arrow-up' color='green' size={17} />
-                                                        :
-                                                        <Icon style={{padding: 3}} name='arrow-down' color='red' size={17} />
-                                                    }
-                                                    <Text style={todayGRecovered === 0 ? {backgroundColor: 'red', color: 'white', paddingVertical: 3, paddingHorizontal: 3, fontWeight: 'bold'} : {backgroundColor: 'green', color: 'white', paddingVertical: 3, paddingHorizontal: 3, fontWeight: 'bold'}}>{todayNewRecovered}</Text>
-                                                </View>
-                                            </View>
-                                        </View>
-                                        <View style={{flexDirection: 'column', alignItems: 'center'}}>
-                                            <View style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-                                                <Text style={{color: '#666', fontWeight: 'bold', fontSize: 20, marginTop: 3}}>Critical</Text>
-                                                <Text style={{marginBottom: 5, fontSize: 22, fontWeight: 'bold', backgroundColor: 'rgba(255,100,0,1)', color: 'white', paddingVertical: 2, paddingHorizontal: 10, borderRadius: 5, overflow: 'hidden'}}>{critical == null ? 0 : this.nwc(critical + todayNewOpen)}</Text>
-                                                <View style={todayGOpen === 1 ? {display: 'flex', flexDirection: 'row', alignItems: 'center', borderColor: 'red', borderWidth: 2, borderRadius: 5, overflow: 'hidden'} : {display: 'flex', flexDirection: 'row', alignItems: 'center', borderColor: 'green', borderWidth: 2, borderRadius: 5, overflow: 'hidden'}}>
-                                                    { 
-                                                        todayGOpen === 1 ?
-                                                        <Icon style={{padding: 3}} name='arrow-up' color='red' size={17} />
-                                                        :
-                                                        <Icon style={{padding: 3}} name='arrow-down' color='green' size={17} />
-                                                    }
-                                                    <Text style={todayGOpen === 1 ? {backgroundColor: 'red', color: 'white', paddingVertical: 3, paddingHorizontal: 3, fontWeight: 'bold'} : {backgroundColor: 'green', color: 'white', paddingVertical: 3, paddingHorizontal: 3, fontWeight: 'bold'}}>{todayNewOpen}</Text>
-                                                </View>
-                                            </View>
-                                        </View>
+                                        <ToggleCountryStat 
+                                            title="Confirmed"
+                                            color="rgba(255,166,91,1)"
+                                            cases={todayGConf}
+                                            caseType={confirmed}
+                                            caseNum={this.nwc(confirmed + todayNewConf)}
+                                            caseNew={todayNewConf}
+                                        />
+                                        <ToggleCountryStat 
+                                            title="Recovered"
+                                            color="rgba(38, 166, 91,1)"
+                                            cases={todayGRecovered}
+                                            caseType={recovered}
+                                            caseNum={this.nwc(recovered + todayNewRecovered)}
+                                            caseNew={todayNewRecovered}
+                                        />
+                                        <ToggleCountryStat 
+                                            title="Critical"
+                                            color="rgba(255,100,0,1)"
+                                            cases={todayGOpen}
+                                            caseType={critical}
+                                            caseNum={this.nwc(critical + todayNewOpen)}
+                                            caseNew={todayNewOpen}
+                                        />
                                     </View>
                                     <View style={{flexDirection: 'row', alignItems: 'center', marginBottom: 10, marginTop: 25, justifyContent: 'space-around'}}>
                                         <View style={{flexDirection: 'column', alignItems: 'center'}}>
