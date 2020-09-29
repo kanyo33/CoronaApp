@@ -46,7 +46,7 @@ if problems exist:
 
 ## Future Implementations
 
-- [ ] Refactor. 
+- [x] Refactor. 
 - [ ] Run unit tests on node packages added to remove warnings.
 - [ ] Load balance data based on geographical zones to improve performance.
 - [ ] Connect geographical zones of active cases to users current location to send out notifications when user enters a geographical zone where an active case was reported. 

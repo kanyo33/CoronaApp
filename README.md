@@ -37,7 +37,7 @@ Since the publication of corona related apps requires government approval, this 
 - [ ] A danger zone feature is introduced to determine how large the geographical fence should of a recorded case, therefore controlling the number of notifications if the user, for example, lives in highly populated areas.
 - [ ] The user is notified to take the appropriate precautions when leaving their home.
 - [ ] Future growth projections will be assisted by machine learning algorithms to determine how the news affect the spread of the virus. Also, a prediction of  the potential to attract the virus when leaving the house can be developed by using the location history and comparing it to the number of recorded cases nearby. 
-- [ ] Create Corona News Feed tailored to each country.
+- [x] Create Corona News Feed tailored to each country.
 - [ ] Establish community groups to allow users to actively engage with people who had, have and/or suffer any consequences due to the corona outbreak. 
 
 ## Please Share
